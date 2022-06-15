@@ -1,0 +1,24 @@
+{
+  "name": "5.1-users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^2.4.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "superagent": "^7.1.6",
+    "uniqid": "^5.4.0",
+    "validator": "^13.7.0",
+    "yargs": "^17.5.1"
+  }
+}

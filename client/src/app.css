@@ -1,0 +1,13 @@
+.mainContainer {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+button {
+  margin-left: 1rem;
+  cursor: pointer;
+}
