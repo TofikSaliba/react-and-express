@@ -1,5 +1,5 @@
 {
-  "name": "5.1-users",
+  "name": "tofik-weather-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,11 +7,21 @@
   "scripts": {
     "client": "npm start --prefix client",
     "server": "nodemon src/server.js",
-    "start": "concurrently \"npm run client\" \"npm run server\""
+    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
     "axios": "^0.27.2",
     "chalk": "^2.4.1",
     "concurrently": "^7.2.2",
@@ -21,5 +31,23 @@
     "uniqid": "^5.4.0",
     "validator": "^13.7.0",
     "yargs": "^17.5.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
