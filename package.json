@@ -5,11 +5,12 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "client": "npm start --prefix client",
-    "server": "nodemon server.js",
-    "startit": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "node server.js"
+    "server": "nodemon server/server.js",
+    "start": "npm start --prefix server",
+    "install-client": "cd client && npm install && npm run build && cd ..",
+    "install-server": "cd server && npm install && cd .. ",
+    "heroku-postbuild": "npm run install-client && npm run install-server"
   },
   "author": "",
   "license": "ISC",
