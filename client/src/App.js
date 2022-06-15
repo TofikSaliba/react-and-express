@@ -14,7 +14,7 @@ function App() {
     setNotFound("");
     setBackEndData(null);
     try {
-      const res = await API.get(`/weather/${location}`);
+      const res = await API.get(`/api/weather/${location}`);
       setBackEndData(res.data);
     } catch (err) {
       console.log(err);

@@ -6,7 +6,11 @@ import { fileURLToPath } from "url";
 
 const app = express();
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicPath = path.join(__dirname, "../client/build");
+
 app.use(cors());
+app.use(express.static(publicPath));
 
 app.get("/api/weather/:location", function (req, res) {
   axios
@@ -29,17 +33,11 @@ app.get("/api/weather/:location", function (req, res) {
     });
 });
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// if (process.env.NODE_ENV === "production") {}
 
-const publicPath = path.join(__dirname, "../client/build");
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(publicPath));
-
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(publicPath, "index.html"));
-  });
-}
+app.get("*", function (req, res) {
+  res.sendFile(path.join(publicPath, "index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 
