@@ -17,7 +17,7 @@ app.get("/api/weather/:location", function (req, res) {
       });
     })
     .catch((err) => {
-      res.json({
+      res.status(404).json({
         status: err.response.status,
         message: err.message,
       });

@@ -6,15 +6,19 @@ import "./app.css";
 function App() {
   const [backEndData, setBackEndData] = useState({});
   const [location, setLocation] = useState("");
+  const [notFound, setNotFound] = useState("");
 
   const getWeather = async (e) => {
     e.preventDefault();
+    setNotFound("");
     setBackEndData(null);
     try {
-      const { data } = await axios.get(`/api/weather/${location}`);
-      setBackEndData(data);
+      const res = await axios.get(`/api/weather/${location}`);
+      setBackEndData(res.data);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
+      setNotFound(`City Not Found, entered: ${location}`);
+      setBackEndData({});
     } finally {
       setLocation("");
     }
@@ -42,6 +46,7 @@ function App() {
       </form>
       {backEndData && <div className="weatherData">{getWeatherJSX()}</div>}
       {!backEndData && <div className="loading">Loading...</div>}
+      {<div className="loading">{notFound}</div>}
     </div>
   );
 }
