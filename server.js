@@ -1,6 +1,8 @@
 import axios from "axios";
 import express from "express";
 import cors from "cors";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 
@@ -26,6 +28,16 @@ app.get("/api/weather/:location", function (req, res) {
       });
     });
 });
+
+const file = dirname(fileURLToPath(import.meta.url));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(file, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(file, "client/build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
