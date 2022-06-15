@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { API } from "./api/api";
 import "./app.css";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     setNotFound("");
     setBackEndData(null);
     try {
-      const res = await axios.get(`/api/weather/${location}`);
+      const res = await API.get(`/weather/${location}`);
       setBackEndData(res.data);
     } catch (err) {
       console.log(err);
