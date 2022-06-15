@@ -4,13 +4,14 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const app = express();
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicPath = path.join(__dirname, "../client/build");
 
-app.use(cors());
+const app = express();
+
 app.use(express.static(publicPath));
+app.use(express.json());
+app.use(cors());
 
 app.get("/api/weather/:location", function (req, res) {
   axios
@@ -35,7 +36,7 @@ app.get("/api/weather/:location", function (req, res) {
 
 // if (process.env.NODE_ENV === "production") {}
 
-app.get("*", function (req, res) {
+app.get("*", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
