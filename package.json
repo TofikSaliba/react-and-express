@@ -8,7 +8,8 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "start": "concurrently \"npm run client\" \"npm run server\""
+    "startit": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
